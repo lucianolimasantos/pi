@@ -25,12 +25,15 @@ def sobre(request):
 
 @login_required 
 def formulario1(request):
-      form = MeuFormularioForm(request.POST or None)
-      if request.method == 'POST':
-       form.save()
-     
-    
-      return render(request, 'formulario1.html', {'form': form})  
+    form = MeuFormularioForm(request.POST or None)
+    if request.method == 'POST':
+        form = MeuFormularioForm(request.POST)
+        if form.is_valid():
+         saved_instance = form.save(commit=True)
+         return render(request, 'sucesso.html', {'form':  MeuFormularioForm(instance=saved_instance)})  
+        else:
+            print('error')
+    return render(request, 'formulario1.html', {'form': form})
    
    
 

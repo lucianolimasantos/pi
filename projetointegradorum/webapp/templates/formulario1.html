@@ -15,13 +15,12 @@
         font-family: Georgia, 'Times New Roman', Times, serif;
         text-indent: 20px;
     }
+    
 </style>
 
     <h3>Formulários</h3>
-    {% if message %}
-      {{message}}
-    {% endif %}
-    <form action="." method="POST" id="formweb"><h4>CHECK LIST DE VERIFICAÇÃO PARA PRÉ START UP</h4><br>
+  
+    <form action="." method="POST" name=form id="formweb"><h4>CHECK LIST DE VERIFICAÇÃO PARA PRÉ START UP</h4><br>
 {% csrf_token %}
 <div class="dadosiniciais">
 USINA: {{ form.usina }}
@@ -29,7 +28,7 @@ DATA DE INSPEÇÃO: {{ form.datainsp }}
 </div>
 
 RPE
-<fieldset id="sinalizacao"><legend>SINALIZAÇÃO</legend>															
+<fieldset class="sinal" id="sinalizacao"><legend>SINALIZAÇÃO</legend>															
 											
 	<p> As áreas, vias de acesso, e equipamentos críticos estão sinalizados com placas de advertência/orientativas (espaços confinados, painéis elétricos, desníveis, vasos de pressão, etc...)?*</p>														
                <p>{{ form.opcoes }}</p>
